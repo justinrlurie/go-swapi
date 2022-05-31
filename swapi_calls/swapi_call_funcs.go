@@ -26,7 +26,7 @@ func SWAPI_url_concat (root_param string) (url string) {
 // makes an HTTP request for each character from the desired film. 
 // TODO : Decrease the number of HTTP requests by requesting entire list of characters once 
 // and selecting those that are in the movie. Slightly complicated due to pagination of results.
-func SWAPI_get_characters_from_film (film_title string, persons *[]swapi_data_structs.Person) {
+func SWAPI_get_characters_from_film (film_title string, persons *[]Person) {
 	// TODO : This function is a bit long, maybe break it into smaller functions?
 	var film_title_params = map[string]string {
 		"The Phantom Menace" 		: "4",
@@ -54,7 +54,7 @@ func SWAPI_get_characters_from_film (film_title string, persons *[]swapi_data_st
 		log.Fatal(api_get_from_err)
 	} // Not sure if we need this extra error check
 
-	var film_struct swapi_data_structs.Film
+	var film_struct Film
 	json.Unmarshal(response, &film_struct)
 	// parse response into struct from swapi_data_structs
 	
@@ -62,7 +62,7 @@ func SWAPI_get_characters_from_film (film_title string, persons *[]swapi_data_st
 	// string slice containing urls for the following for loop
 
 	for i := range characters_slice {
-		var temp_person_struct swapi_data_structs.Person
+		var temp_person_struct Person
 		// temporary person struct to store data for one person
 		response, api_get_from_err = safe_http.Safe_http_get(characters_slice[i], 10)
 		// This HTTP request gets called on each loop (bad)
@@ -81,7 +81,7 @@ func SWAPI_get_homeworld_name_and_pop_from_url (homeworld_url string) (planet_na
 		log.Fatal(api_get_from_err)
 	} // Not sure if we need this extra error check
 
-	var planet swapi_data_structs.Planet
+	var planet Planet
 	json.Unmarshal(response, &planet)
 
 	return planet.Name, planet.Population

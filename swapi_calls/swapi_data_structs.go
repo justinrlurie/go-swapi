@@ -2,7 +2,7 @@
 // Use the following link to quickly conver from JSON to formatted go structs:
 // https://mholt.github.io/json-to-go/
 
-package swapi_data_structs
+package swapi_calls
 
 import "time"
 
