@@ -1,4 +1,4 @@
-module github.com/justinrlurie/go-swapi.git
+module github.com/justinrlurie/go-http.git
 
 go 1.18
 
