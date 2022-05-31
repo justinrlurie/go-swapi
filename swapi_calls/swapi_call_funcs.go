@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/justinrlurie/go_modules/tree/main/safe_http"
-	//"example.com/safe_http"
-	//"example.com/swapi_data_structs"
+	"github.com/justinrlurie/go-http/safe_http"
 )
 
 // SWAPI_url_concat is a public function that returns the swapi root url + the parameter to be returned,
